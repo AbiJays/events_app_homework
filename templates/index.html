@@ -40,10 +40,11 @@
                 <p><i>Recurring</i></p>
             {% endif %}
 
-            <form class="form-inline" action="/delete/{{ event_name }}" method="POST">
-                <input type="submit" value="Delete">
+            <form class="form-inline" action="/events/delete/{{ event.title }}" method="POST">
+                <input type="submit" value="Delete"> 
             </form>
         </div>
         {%endfor%}
     </div>
 {% endblock content %}
+<!-- event.TITLE -->
