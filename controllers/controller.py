@@ -21,4 +21,5 @@ def add_event():
     eventDesc = request.form['description']
     newEvent = Event(date=eventDate, title=eventTitle, guest_number=eventGuest, room=eventRoom, description=eventDesc)
     add_new_event(newEvent)
-    return 'Done'
+    
+    return render_template("index.html", title="Abi", all_events = events)
