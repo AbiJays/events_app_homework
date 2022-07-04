@@ -1,3 +1,23 @@
+how do you do IDs. what am I missing?
 
+recurring, how do?
 
-hwo do you do IDs. what am I missing?
+delete event
+
+add_event I did not do this, is this necessary for the programme to actually work? I don't think I actually added the event properly.
+
+must you import datetime? I used the datetime time date picker thing without importing
+    - to use the date time as anything other than a strings. as python it works as an actual datetime and you can order as date.
+
+IN SOLUTION CODE:
+  recurring = True if 'recurring' in request.form else False
+  # sets recurring to true if the recurring string can be found. means the tickbox has been ticked. intsead. set up:      
+  #   <label for="recurring">Recurring?</label>
+      # <input type="checkbox" name="recurring" id="recurring" value="False">
+      # SET TO TRUE. 
+
+1. from flask import render_template, request, redirect
+return redirect('/events')
+    # redirect MEANS you don't have to create a new template
+
+    
