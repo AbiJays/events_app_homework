@@ -4,7 +4,7 @@
 
     <h1>Events List</h1>
 
-    <form action="/events" method="post"> <!-- ADDED -->
+    <form class="form-inline" action="/events" method="post"> <!-- ADDED -->
         <label for="date">Date</label>
         <input type="date" name="date" id="date">
 
@@ -14,6 +14,9 @@
         <label for="guest_number">Guest Number</label>
         <input type="number" name="guest_number" id="guest_number">
 
+        <label for="recurring">Recurring?</label>
+        <input type="checkbox" name="recurring" id="recurring" value="False">
+
         <label for="room">Room</label>
         <input type="text" name="room" id="room">
 
@@ -21,13 +24,26 @@
         <textarea name="description" rows="2" cols="30"></textarea>
         
         <input type="submit" value="Add Event">
+
     </form>
 
-    {% for event in all_events%}
-        <p>
-            {{event.date}}: {{event.name}}: {{event.guest_number}}: {{event.room}} <b>{{event.description}}</b>: 
-        </p>
-    {%endfor%}
+    <div class="event-container">
+        {% for event in all_events%}
+        <div class="event">
+            <h2>{{event.title}}</h2>
+            <h4>{{event.date}}</h4>
+            <h3>{{event.description}}</h3> 
+            <h5>{{event.guest_number}}</h5>
+            <h5>{{event.room}}</h5>
+            
+            {% if event.recurring %}
+                <p><i>Recurring</i></p>
+            {% endif %}
 
+            <form class="form-inline" action="/delete/{{ event_name }}" method="POST">
+                <input type="submit" value="Delete">
+            </form>
+        </div>
+        {%endfor%}
+    </div>
 {% endblock content %}
-

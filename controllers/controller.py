@@ -1,7 +1,7 @@
-from flask import render_template, request
+from flask import render_template, request, redirect
 from app import app
-from models.event_list import events, add_new_event # get a hold of all the tasks
-from models.events import Event #File should actually be event.py not events 
+from models.event_list import events, add_new_event, delete_event # get a hold of all the tasks
+from models.events import * #File should actually be event.py not events 
 
 # change the template to display all events
 
@@ -19,7 +19,13 @@ def add_event():
     eventGuest = request.form['guest_number']
     eventRoom = request.form['room']
     eventDesc = request.form['description']
-    newEvent = Event(date=eventDate, title=eventTitle, guest_number=eventGuest, room=eventRoom, description=eventDesc)
+    recurring = True if 'recurring' in request.form else False
+    newEvent = Event(date=eventDate, title=eventTitle, recurring=recurring, guest_number=eventGuest, room=eventRoom, description=eventDesc)
     add_new_event(newEvent)
     
-    return render_template("index.html", title="Abi", all_events = events)
+    return redirect('/events')
+
+@app.route('/events/delete/<title>', methods=['POST'])
+def delete(title):
+    delete_event(title)
+    return redirect('/events')

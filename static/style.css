@@ -19,3 +19,36 @@ body > p {
 #guest_number{
     color: rgb(129, 83, 27);
 }
+
+.event-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .event {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    background-color: #617073;
+    padding: 10px;
+    margin:20px;
+  }
+  
+  .event p, i{
+    color: white;
+    list-style: none;
+    margin:3px;
+  }
+  
+  h2 {
+    color: lightgrey;
+  }
+  h3 {
+    font-size: small;
+  }
+  
+  h3, h4, h5 {
+    margin: 5px;
+    color:white;
+  }
